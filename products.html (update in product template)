@@ -1,0 +1,29 @@
+<div class="comments-section mt-6">
+  <h4 class="font-semibold mb-3 text-lg">التعليقات (${product.comments?.length || 0})</h4>
+  <div class="comments-container space-y-3">
+    ${(product.comments || []).map(c => `
+      <div class="comment">
+        <div class="comment-header">
+          <img src="${c.avatar}" class="comment-avatar" alt="${c.author}">
+          <div>
+            <div class="comment-author">${c.author}</div>
+            <div class="comment-date">${c.date}</div>
+          </div>
+        </div>
+        <div class="comment-content">${c.content}</div>
+      </div>
+    `).join('')}
+  </div>
+  
+  <form onsubmit="event.preventDefault(); addComment(${product.id}, 'product', this.content.value)" 
+        class="mt-4 ${localStorage.getItem('currentUser') ? '' : 'hidden'}">
+    <textarea name="content" 
+              class="w-full p-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500" 
+              placeholder="أضف تعليقاً..." 
+              rows="2"
+              required></textarea>
+    <button class="mt-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
+      نشر التعليق
+    </button>
+  </form>
+</div>

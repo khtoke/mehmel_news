@@ -1,0 +1,33 @@
+// عند عرض الخبر أضف:
+${newsData.likes?.length || 0}
+<button onclick="handleLike(${newsData.id}, 'news')" class="text-red-500 hover:text-red-700">
+  ❤️ <span class="like-count">${newsData.likes?.length || 0}</span>
+</button>
+
+<div class="comments-section mt-6">
+  <h4 class="font-semibold mb-3 text-lg">التعليقات (${newsData.comments?.length || 0})</h4>
+  <div class="comments-container space-y-3">
+    ${(newsData.comments || []).map(c => `
+      <div class="comment">
+        <div class="comment-header">
+          <img src="${c.avatar}" class="comment-avatar" alt="${c.author}">
+          <div>
+            <div class="comment-author">${c.author}</div>
+            <div class="comment-date">${c.date}</div>
+          </div>
+        </div>
+        <div class="comment-content">${c.content}</div>
+      </div>
+    `).join('')}
+  </div>
+  
+  <form onsubmit="event.preventDefault(); addComment(${newsData.id}, 'news', this.elements[0].value)" 
+        class="mt-4 ${localStorage.getItem('currentUser') ? '' : 'hidden'}">
+    <textarea class="w-full p-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500" 
+              placeholder="أضف تعليقاً..."
+              rows="2"></textarea>
+    <button class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors">
+      نشر التعليق
+    </button>
+  </form>
+</div>
