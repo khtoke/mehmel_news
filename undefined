@@ -1,8 +1,0 @@
-const existingNews = JSON.parse(localStorage.getItem('communityNews') || '[]');
-const updatedNews = [newsData, ...existingNews];
-localStorage.setItem('communityNews', JSON.stringify(updatedNews));
-
-renderNewsArticle(newsData, true);
-form.reset();
-toggleNewsModal();
-showSuccessMessage('تم نشر الخبر بنجاح');
