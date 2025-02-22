@@ -1,0 +1,276 @@
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, shrink-to-fit=no">
+  <title>الأخبار - مجتمع بائعي الحاسوب</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@300;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-gray-100 font-['Noto_Sans_Arabic'] dark:bg-gray-900">
+  <!-- تحسينات القائمة المتنقلة -->
+  <nav class="bg-white shadow-lg dark:bg-gray-800">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="flex justify-between items-center h-16">
+        <div class="flex items-center">
+          <svg class="w-8 h-8 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"/>
+          </svg>
+          <span class="text-2xl font-bold mr-2 dark:text-white">أخبار المجتمع</span>
+        </div>
+        
+        <!-- تحسينات قائمة الجوال -->
+        <div class="md:hidden flex items-center">
+          <button onclick="toggleMobileMenu()" class="p-2 text-gray-600 dark:text-gray-300 hover:text-blue-600">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+            </svg>
+          </button>
+        </div>
+        
+        <!-- القائمة الرئيسية -->
+        <div class="hidden md:flex space-x-6 items-center">
+          <a href="index.html" class="nav-link">الرئيسية</a>
+          <a href="products.html" class="nav-link">المنتجات</a>
+          <a href="members.html" class="nav-link">الأعضاء</a>
+          <button onclick="toggleTheme()" class="theme-toggle">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <!-- سيتم تحديث الأيقونة تلقائياً -->
+            </svg>
+          </button>
+          <button onclick="toggleNewsModal()" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
+            خبر جديد
+          </button>
+        </div>
+      </div>
+    </div>
+    
+    <!-- تحسينات القائمة المنسدلة -->
+    <div id="mobileMenu" class="md:hidden hidden fixed inset-0 bg-black/30 backdrop-blur-sm z-40">
+      <div class="bg-white dark:bg-gray-800 w-full sm:w-3/4 h-full ml-auto p-6 transform transition-transform">
+        <div class="flex justify-between items-center mb-8">
+          <h3 class="text-xl font-bold dark:text-white">القائمة</h3>
+          <button onclick="toggleMobileMenu()" class="text-gray-500 dark:text-gray-300 text-2xl">×</button>
+        </div>
+        <div class="space-y-6">
+          <a href="index.html" class="block text-lg nav-link-mobile">الرئيسية</a>
+          <a href="products.html" class="block text-lg nav-link-mobile">المنتجات</a>
+          <a href="members.html" class="block text-lg nav-link-mobile">الأعضاء</a>
+          <button onclick="toggleTheme()" class="w-full text-lg nav-link-mobile">تبديل الثيم</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- تحسينات محتوى الصفحة -->
+  <main class="py-8 px-4">
+    <div class="max-w-3xl mx-auto space-y-8"> 
+      <!-- تحسينات حقل البحث -->
+      <div class="mb-8">
+        <div class="relative">
+          <input type="text" placeholder="ابحث في الأخبار..." 
+                 class="w-full px-4 py-4 text-lg rounded-xl border dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:ring-2 focus:ring-blue-500">
+          <svg class="absolute left-3 top-3.5 w-5 h-5 text-gray-400 dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+          </svg>
+        </div>
+      </div>
+
+      <!-- شبكة الأخبار -->
+      <div id="news-container" class="space-y-6"> 
+        <!-- سيتم تعبئة الأخبار هنا -->
+      </div>
+
+      <!-- زر تحميل المزيد -->
+      <div class="text-center">
+        <button id="loadMore" class="bg-blue-600 text-white px-8 py-2 rounded-full hover:bg-blue-700 transition-all">
+          تحميل المزيد من الأخبار
+        </button>
+      </div>
+    </div>
+  </main>
+
+  <!-- تحسينات مودال النشر -->
+  <div id="newsModal" class="fixed inset-0 bg-black/50 backdrop-blur-sm hidden z-50">
+    <div class="modal-container bg-white dark:bg-gray-800 w-full md:max-w-2xl mx-auto rounded-2xl shadow-2xl p-6 mt-20 animate-fade-up">
+      <div class="flex justify-between items-center mb-6">
+        <h3 class="text-2xl font-bold dark:text-white">نشر خبر جديد</h3>
+        <button onclick="toggleNewsModal()" class="text-gray-500 dark:text-gray-300 hover:text-gray-700">✕</button>
+      </div>
+      
+      <form onsubmit="handleNewsSubmission(event)" class="space-y-4">
+        <div>
+          <label class="block text-sm font-medium mb-2 dark:text-gray-200">عنوان الخبر</label>
+          <input type="text" name="newsTitle" required 
+                 class="w-full px-3 py-2 border rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+        </div>
+        
+        <div>
+          <label class="block text-sm font-medium mb-2 dark:text-gray-200">محتوى الخبر</label>
+          <textarea name="newsContent" rows="5" required 
+                    class="w-full px-3 py-2 border rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white"></textarea>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-sm font-medium mb-2 dark:text-gray-200">كلمة المرور</label>
+            <input type="password" name="newsPassword" required 
+                   class="w-full px-3 py-2 border rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+          </div>
+          <div>
+            <label class="block text-sm font-medium mb-2 dark:text-gray-200">صورة الخبر (اختياري)</label>
+            <div class="relative border-2 border-dashed rounded-lg p-4 text-center">
+              <input type="file" accept="image/*" name="newsImage" 
+                     class="absolute inset-0 w-full h-full opacity-0 cursor-pointer" 
+                     id="newsImage" onchange="previewImage(event, 'newsImagePreview')">
+              <label for="newsImage" class="cursor-pointer text-blue-600 dark:text-blue-400">
+                انقر لرفع صورة
+              </label>
+              <img id="newsImagePreview" class="mt-4 mx-auto max-h-40 hidden rounded-lg" alt="معاينة الصورة">
+            </div>
+          </div>
+        </div>
+        
+        <button type="submit" 
+                class="w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white py-3 rounded-lg hover:from-blue-700 hover:to-blue-800 transition-all">
+          نشر الخبر
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+  <script>
+  let currentPage = 1;
+  const articlesPerPage = 5;
+
+  // دالة تحميل الأخبار بتنسيق حديث
+  const loadNews = (page) => {
+    const allNews = JSON.parse(localStorage.getItem('communityNews') || '[]')
+      .filter(news => news?.id && news.title)
+      .sort((a, b) => b.id - a.id); // Ensure newest first
+
+    const start = (page - 1) * articlesPerPage;
+    const end = start + articlesPerPage;
+    const newsToShow = allNews.slice(0, end);
+
+    const container = document.getElementById('news-container');
+    container.innerHTML = newsToShow.map(news => `
+      <article class="news-card bg-white dark:bg-gray-800 rounded-2xl shadow-md overflow-hidden transition-all hover:shadow-xl" 
+               data-news-id="${news.id}">
+        <!-- تحسينات رأس البطاقة -->
+        <div class="p-4 border-b dark:border-gray-700 flex items-center gap-4">
+          <img src="${news.authorAvatar || defaultAvatar}" 
+               class="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm">
+          <div>
+            <h4 class="font-semibold dark:text-white">${news.author}</h4>
+            <p class="text-sm text-gray-500">${news.date}</p>
+          </div>
+        </div>
+
+        <!-- تحسينات محتوى البطاقة -->
+        <div class="p-4">
+          <p class="text-lg leading-relaxed text-gray-800 dark:text-gray-200">${news.content}</p>
+          ${news.image ? `
+          <div class="my-4 rounded-lg overflow-hidden">
+            <img src="${news.image}" 
+                 class="w-full h-auto max-h-96 object-cover"
+                 alt="${news.title}"
+                 loading="lazy">
+          </div>` : ''}
+        </div>
+
+        <!-- تحسينات تفاعلات الخبر -->
+        <div class="px-4 pt-2 pb-4 border-t dark:border-gray-700">
+          <!-- أحصائية التفاعل -->
+          <div class="flex items-center justify-between text-sm text-gray-500 mb-3">
+            <div class="flex items-center gap-1">
+              <span class="bg-blue-100 dark:bg-blue-900 rounded-full p-1">
+                <svg class="w-4 h-4 text-blue-500" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M23.997 11H12V1L0 13h11v10l12-12z"/>
+                </svg>
+              </span>
+              <span>${news.likes?.length || 0}</span>
+            </div>
+            <span>${news.comments?.length || 0} تعليق</span>
+          </div>
+
+          <!-- تحسينات أزرار التفاعل -->
+          <div class="grid grid-cols-2 gap-2 pt-2">
+            <button onclick="handleLike(${news.id}, 'news')" 
+                    class="react-btn flex items-center justify-center gap-2 p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+              <svg class="w-6 h-6 ${news.likes?.includes(currentUser?.phone) ? 'text-red-500 fill-red-500' : 'text-gray-600 dark:text-gray-300'}" 
+                   fill="${news.likes?.includes(currentUser?.phone) ? 'currentColor' : 'none'}" 
+                   stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+              </svg>
+              <span class="${news.likes?.includes(currentUser?.phone) ? 'text-red-500' : 'text-gray-600 dark:text-gray-300'}">
+                أعجبني
+              </span>
+            </button>
+
+            <button onclick="this.closest('article').querySelector('.comment-input').focus()" 
+                    class="react-btn flex items-center justify-center gap-2 p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+              <svg class="w-6 h-6 text-gray-600 dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+              </svg>
+              <span class="text-gray-600 dark:text-gray-300">تعليق</span>
+            </button>
+          </div>
+
+          <!-- تحسينات قسم التعليقات -->
+          <div class="comments-section mt-4 space-y-4">
+            ${(news.comments || []).slice(0, 2).map(c => `
+              <div class="comment flex items-start gap-3">
+                <img src="${c.avatar || defaultAvatar}" 
+                     class="w-10 h-10 rounded-full object-cover border-2 border-blue-500">
+                <div class="flex-1 bg-gray-100 dark:bg-gray-700 p-3 rounded-xl">
+                  <div class="flex items-baseline gap-2">
+                    <span class="font-medium text-lg dark:text-gray-200">${c.author}</span>
+                    <span class="text-lg text-gray-500">${c.date}</span>
+                  </div>
+                  <p class="text-lg text-gray-700 dark:text-gray-300 mt-1">${c.content}</p>
+                </div>
+              </div>
+            `).join('')}
+
+            <form onsubmit="event.preventDefault(); addComment(${news.id}, 'news', this.comment.value, this)" 
+                  class="mt-4 ${currentUser ? '' : 'hidden'}">
+              <div class="flex gap-2 items-start">
+                <img src="${currentUser?.avatar || defaultAvatar}" 
+                     class="w-10 h-10 rounded-full object-cover border-2 border-blue-500">
+                <div class="flex-1 relative">
+                  <textarea name="comment" 
+                            class="comment-input w-full p-3 text-lg border-2 rounded-xl dark:bg-gray-700 dark:border-gray-600 dark:text-white" 
+                            placeholder="اكتب تعليقاً..." 
+                            rows="1"
+                            style="min-height: 56px"
+                            required></textarea>
+                  <button class="absolute bottom-3 left-3 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 text-lg">
+                    نشر
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </article>
+    `).join('');
+    
+    document.getElementById('loadMore').style.display = 
+      newsToShow.length < allNews.length ? 'block' : 'none';
+  }
+
+  // تحميل المزيد من الأخبار
+  document.getElementById('loadMore').addEventListener('click', () => {
+    currentPage++;
+    loadNews(currentPage);
+  });
+
+  // التحميل الأولي
+  document.addEventListener('DOMContentLoaded', () => {
+    loadNews(1);
+  });
+  </script>
+</body>
+</html>

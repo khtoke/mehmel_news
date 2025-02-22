@@ -1,0 +1,384 @@
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>الصفحة الرئيسية - مجتمع بائعي الحاسوب</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@300;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+  <!-- شريط التنقل المحسّن -->
+  <nav class="bg-gradient-to-r from-blue-600 to-blue-700 shadow-xl">
+    <div class="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        <!-- الشعار -->
+        <div class="flex items-center space-x-3">
+          <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+          </svg>
+          <span class="text-2xl font-bold text-white">PC Community</span>
+        </div>
+
+        <!-- قائمة سطح المكتب -->
+        <div class="hidden md:flex items-center space-x-8">
+          <a href="news.html" class="text-white hover:text-blue-100 transition-colors flex items-center space-x-2">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+            </svg>
+            <span>الأخبار</span>
+          </a>
+          <a href="products.html" class="text-white hover:text-blue-100 transition-colors flex items-center space-x-2">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+            </svg>
+            <span>المنتجات</span>
+          </a>
+          <a href="members.html" class="text-white hover:text-blue-100 transition-colors flex items-center space-x-2">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+            </svg>
+            <span>الأعضاء</span>
+          </a>
+        </div>
+
+        <!-- الجزء الأيمن -->
+        <div class="flex items-center space-x-4">
+          <button onclick="toggleTheme()" class="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/>
+            </svg>
+          </button>
+          
+          <div class="relative">
+            <button onclick="toggleProfileModal()" class="profile-button flex items-center space-x-2 bg-white/10 hover:bg-white/20 px-4 py-2 rounded-full transition-colors">
+              <img src="${localStorage.getItem('currentUser') ? JSON.parse(localStorage.getItem('currentUser')).avatar : defaultAvatar}" 
+                   class="w-8 h-8 rounded-full object-cover border-2 border-white/20">
+              <span class="text-white">${localStorage.getItem('currentUser') ? JSON.parse(localStorage.getItem('currentUser')).name : 'مرحبًا'}</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- القسم الرئيسي -->
+  <main class="relative">
+    <!-- قسم البطل -->
+    <div class="relative bg-gradient-to-br from-blue-600 to-blue-700 text-white py-24">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h1 class="text-4xl md:text-6xl font-bold mb-6 animate-fade-in-up">مرحبًا بكم في مجتمع الحاسوب</h1>
+        <p class="text-xl md:text-2xl mb-8 opacity-90">الوجهة الأولى لمحترفي بيع الحواسيب والمكونات</p>
+        <div class="flex justify-center space-x-4">
+          <a href="products.html" class="bg-white text-blue-600 px-8 py-3 rounded-full text-lg font-semibold hover:bg-gray-100 transition-all shadow-lg hover:shadow-xl">
+            تصفح المنتجات
+          </a>
+          <button onclick="toggleAuthModal()" class="bg-white/10 hover:bg-white/20 px-8 py-3 rounded-full text-lg font-semibold transition-all border-2 border-white/20">
+            انضم إلينا
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- إحصائيات المجتمع -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow">
+          <div class="text-blue-600 mb-4">
+            <svg class="w-12 h-12 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+            </svg>
+          </div>
+          <h3 class="text-2xl font-bold text-center mb-2 dark:text-white">الأعضاء</h3>
+          <p class="text-4xl font-bold text-center text-blue-600 dark:text-blue-400" id="memberCount">0</p>
+        </div>
+
+        <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow">
+          <div class="text-blue-600 mb-4">
+            <svg class="w-12 h-12 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+            </svg>
+          </div>
+          <h3 class="text-2xl font-bold text-center mb-2 dark:text-white">الأخبار</h3>
+          <p class="text-4xl font-bold text-center text-blue-600 dark:text-blue-400" id="newsCount">0</p>
+        </div>
+
+        <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow">
+          <div class="text-blue-600 mb-4">
+            <svg class="w-12 h-12 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>
+            </svg>
+          </div>
+          <h3 class="text-2xl font-bold text-center mb-2 dark:text-white">المنتجات</h3>
+          <p class="text-4xl font-bold text-center text-blue-600 dark:text-blue-400" id="productCount">0</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- أحدث الأخبار -->
+    <section class="bg-gray-100 dark:bg-gray-800 py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl font-bold mb-8 text-center dark:text-white">آخر الأخبار</h2>
+        <div id="home-news" class="grid md:grid-cols-3 gap-6">
+          <!-- سيتم تعبئة أحدث الأخبار هنا -->
+        </div>
+      </div>
+    </section>
+
+    <!-- دعوة للعمل -->
+    <div class="relative bg-gray-800 py-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-3xl font-bold text-white mb-6">انضم إلى مجتمعنا الآن</h2>
+        <p class="text-gray-200 mb-8 text-lg">سجل معنا وابدأ في مشاركة أخبارك وعرض منتجاتك</p>
+        <button onclick="toggleAuthModal()" class="bg-white text-blue-600 px-8 py-3 rounded-full text-lg font-semibold hover:bg-gray-100 transition-all shadow-lg hover:shadow-xl">
+          انشاء حساب مجاني
+        </button>
+      </div>
+    </div>
+  </main>
+
+  <!-- تذييل الصفحة -->
+  <footer class="bg-gray-900 text-gray-300 py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div>
+          <h3 class="text-white text-lg font-semibold mb-4">عن المجتمع</h3>
+          <p class="text-sm">منصة متخصصة لعرض وبيع مكونات الحاسوب، حيث تجد أحدث الأخبار وأفضل العروض.</p>
+        </div>
+        <div>
+          <h3 class="text-white text-lg font-semibold mb-4">روابط سريعة</h3>
+          <ul class="space-y-2">
+            <li><a href="news.html" class="hover:text-white transition-colors">الأخبار</a></li>
+            <li><a href="products.html" class="hover:text-white transition-colors">المنتجات</a></li>
+            <li><a href="members.html" class="hover:text-white transition-colors">الأعضاء</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-white text-lg font-semibold mb-4">الدعم</h3>
+          <ul class="space-y-2">
+            <li><a href="#" class="hover:text-white transition-colors">الأسئلة الشائعة</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">الشروط والأحكام</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">اتصل بنا</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-white text-lg font-semibold mb-4">تابعنا</h3>
+          <div class="flex space-x-4">
+            <a href="#" class="p-2 bg-gray-800 rounded-full hover:bg-gray-700 transition-colors">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/></svg>
+            </a>
+            <a href="#" class="p-2 bg-gray-800 rounded-full hover:bg-gray-700 transition-colors">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm3 8h-1.35c-.538 0-.65.221-.65.778v1.222h2l-.209 2h-1.791v7h-3v-7h-2v-2h2v-2.308c0-1.769.931-2.692 3.029-2.692h1.971v3z"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="border-t border-gray-800 mt-8 pt-8 text-center">
+        <p class="text-sm">&copy; 2024 مجتمع بائعي الحاسوب. جميع الحقوق محفوظة.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- المودالات -->
+  <div id="profileModal" class="fixed z-50 inset-0 overflow-y-auto hidden">
+    <div class="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+      <div class="fixed inset-0 transition-opacity" aria-hidden="true">
+        <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
+      </div>
+      <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+      <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full" role="dialog" aria-modal="true" aria-labelledby="modal-headline">
+        <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+          <div class="sm:flex sm:items-start">
+            <div class="text-center sm:mt-0 sm:ml-4 sm:text-left w-full">
+              <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-headline">
+                إدارة الملف الشخصي
+              </h3>
+              <div class="mt-4">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <!-- معلومات الحساب -->
+                  <div class="md:col-span-1 text-center">
+                    <img src="" class="avatar-preview w-24 h-24 rounded-full mx-auto mb-4 object-cover">
+                    <div class="space-y-2">
+                      <input type="file" accept="image/*" id="profileAvatar" name="avatar" class="hidden" onchange="handleAvatarUpload(this)">
+                      <label for="profileAvatar" class="block text-blue-600 cursor-pointer hover:text-blue-700">
+                        تغيير الصورة
+                      </label>
+                      <p class="text-sm text-gray-500">الحد الأقصى 1MB</p>
+                    </div>
+                  </div>
+
+                  <!-- تفاصيل الملف -->
+                  <div class="md:col-span-2">
+                    <form onsubmit="handleProfileUpdate(event)" class="space-y-3">
+                      <div>
+                        <label for="name" class="block text-sm font-medium text-gray-700">الاسم الكامل</label>
+                        <input type="text" name="name" id="name" required class="mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                      </div>
+
+                      <div>
+                        <label for="location" class="block text-sm font-medium text-gray-700">الموقع</label>
+                        <input type="text" name="location" id="location" class="mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                      </div>
+
+                      <div>
+                        <label for="bio" class="block text-sm font-medium text-gray-700">السيرة الذاتية</label>
+                        <textarea name="bio" id="bio" rows="3" class="mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"></textarea>
+                      </div>
+
+                      <div>
+                        <label for="socialLinks" class="block text-sm font-medium text-gray-700">روابط التواصل (افصل بفواصل)</label>
+                        <input type="text" name="socialLinks" id="socialLinks" class="mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                      </div>
+
+                      <div class="mt-4">
+                        <button type="submit" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                          حفظ التغييرات
+                        </button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+
+                <!-- قسم الأمان -->
+                <div class="mt-6 pt-4 border-t border-gray-200">
+                  <h4 class="text-lg font-semibold mb-3">إعدادات الأمان</h4>
+                  <div class="space-y-3">
+                    <div class="flex items-center justify-between">
+                      <span>كلمة مرور النشر الحالية: ***</span>
+                      <button onclick="togglePasswordModal()" class="text-blue-600 hover:text-blue-700 focus:outline-none focus:text-decoration-underline">
+                        تغيير كلمة المرور
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+          <button type="button" class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm" onclick="toggleProfileModal()">
+            إلغاء
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- مودال تغيير كلمة المرور -->
+  <div id="passwordModal" class="fixed z-50 inset-0 overflow-y-auto hidden">
+    <div class="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+      <div class="fixed inset-0 transition-opacity" aria-hidden="true">
+        <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
+      </div>
+      <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+      <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full" role="dialog" aria-modal="true" aria-labelledby="modal-headline">
+        <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+          <div class="sm:flex sm:items-start">
+            <div class="text-center sm:mt-0 sm:ml-4 sm:text-left w-full">
+              <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-headline">
+                تغيير كلمة مرور النشر
+              </h3>
+              <div class="mt-2">
+                <form onsubmit="handleChangePassword(event)" class="space-y-4">
+                  <div>
+                    <label for="currentPassword" class="block text-sm font-medium text-gray-700">كلمة المرور الحالية</label>
+                    <input type="password" name="currentPassword" id="currentPassword" required class="mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                  </div>
+                  <div>
+                    <label for="newPassword" class="block text-sm font-medium text-gray-700">كلمة المرور الجديدة</label>
+                    <input type="password" name="newPassword" id="newPassword" required class="mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                  </div>
+                  <div>
+                    <label for="confirmPassword" class="block text-sm font-medium text-gray-700">تأكيد كلمة المرور الجديدة</label>
+                    <input type="password" name="confirmPassword" id="confirmPassword" required class="mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                  </div>
+                  <div class="mt-4">
+                    <button type="submit" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                      تغيير كلمة المرور
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+          <button type="button" class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm" onclick="togglePasswordModal()">
+            إلغاء
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- مودال المصادقة (تسجيل الدخول / إنشاء حساب) -->
+  <div id="authModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50">
+    <div class="modal-container bg-white w-11/12 md:max-w-md mx-auto rounded-lg shadow-xl p-6 mt-20 animate-fade-up">
+      <div class="flex justify-between items-center mb-4">
+        <h3 id="modalTitle" class="text-2xl font-bold">تسجيل الدخول</h3>
+        <button onclick="toggleAuthModal()" class="text-gray-500 hover:text-gray-700">✕</button>
+      </div>
+      <form id="authForm" onsubmit="handleAuth(event)">
+        <div class="mb-4">
+          <label for="phone" class="block text-gray-700 mb-2">رقم الهاتف</label>
+          <input type="text" id="phone" required class="w-full px-3 py-2 border rounded-lg">
+        </div>
+        <div id="registerFields" class="hidden">
+          <div class="mb-4">
+            <label for="name" class="block text-gray-700 mb-2">الاسم الكامل</label>
+            <input type="text" id="name" class="w-full px-3 py-2 border rounded-lg">
+          </div>
+          <div class="mb-4">
+            <label for="avatar" class="block text-gray-700 mb-2">الصورة الشخصية</label>
+            <input type="file" id="avatar" accept="image/*" class="w-full px-3 py-2 border rounded-lg">
+          </div>
+        </div>
+        <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700">
+          <span id="submitAuthButton">تسجيل الدخول</span>
+        </button>
+      </form>
+      <div class="text-center mt-4">
+        <span id="toggleAuthText" onclick="toggleAuthType()" class="text-blue-600 hover:underline cursor-pointer">
+          إنشاء حساب جديد
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div id="recaptcha-container"></div>
+
+  <script type="module" src="./firebase.js"></script>
+  <script type="module" src="./app.js"></script>
+
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const renderHomeNews = (newsData) => {
+      const container = document.getElementById('home-news');
+      if (!container) return;
+
+      container.innerHTML = newsData.map(item => `
+        <article class="bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-shadow overflow-hidden">
+          ${item.image ? `
+          <div class="relative h-48">
+            <img src="${item.image}" 
+                 class="w-full h-full object-cover"
+                 alt="${item.title}"
+                 loading="lazy">
+          </div>` : ''}
+          <div class="p-6">
+            <h3 class="text-xl font-semibold mb-2 dark:text-white">${item.title}</h3>
+            <p class="text-gray-600 dark:text-gray-300 line-clamp-3 mb-4">${item.content}</p>
+            <div class="flex items-center justify-between text-sm text-gray-500 dark:text-gray-400">
+              <span>${new Date(item.timestamp?.toDate()).toLocaleDateString('ar-EG')}</span>
+              <a href="news.html" class="text-blue-600 hover:text-blue-700 dark:text-blue-400">قراءة المزيد →</a>
+            </div>
+          </div>
+        </article>
+      `).join('') || '<p class="text-center text-gray-500">لا توجد أخبار لعرضها</p>';
+    }
+
+    renderHomeNews([]);
+  });
+  </script>
+</body>
+</html>
