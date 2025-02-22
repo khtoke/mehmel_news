@@ -1,3 +1,0 @@
-<!-- تحديث قسم التعليقات في المقالات -->
-<img src="${currentUser?.avatar || '/default-avatar.svg'}" 
-     class="w-8 h-8 rounded-full object-cover shadow-sm border-2 ${currentUser ? 'border-blue-500' : 'border-gray-300'}">
