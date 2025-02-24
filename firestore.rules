@@ -1,0 +1,13 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // يسمح للجميع بالقراءة
+    match /{document=**} {
+      allow read: if true;
+      // السماح بالكتابة فقط إذا كان المستخدم مسجّلًا ولدية دور "admin"
+      allow write: if request.auth != null && request.auth.token.role == 'admin';
+      // السماح بالحذف إذا كان معرف الكاتب يتطابق مع معرف المستخدم الحالي
+      allow delete: if request.auth != null && resource.data.author == request.auth.uid;
+    }
+  }
+}

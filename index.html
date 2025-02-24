@@ -1,0 +1,68 @@
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>موقع الأخبار</title>
+  <!-- Open Graph Meta Tags for Social Media Cards -->
+  <meta property="og:title" content="موقع الأخبار" />
+  <meta property="og:description" content="تابع آخر الأخبار والتقارير مباشرة" />
+  <meta property="og:image" content="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 630'><rect width='1200' height='630' fill='%232A2F4F'/><text x='600' y='315' fill='%23ecf0f1' font-size='48' text-anchor='middle' alignment-baseline='middle'>موقع الأخبار</text></svg>" />
+  <meta property="og:url" content="https://yourdomain.com/index.html" />
+  <meta property="og:type" content="website" />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-tf4U8S9XBoM0eKo+Y/LCNcxwsnG7Q1lWrBqs+of22s3BEJQALM3nFcK6H6heSjmy0LFHAfbboyiXSWa5HhY1qQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <div class="logo">موقع الأخبار</div>
+      <div class="nav-links">
+        <a href="index.html">الرئيسية</a>
+        <a href="login.html">تسجيل الدخول</a>
+        <a href="dashboard.html">لوحة التحكم</a>
+      </div>
+      <div class="search-box">
+        <input type="text" id="searchInput" placeholder="ابحث عن الأخبار...">
+      </div>
+      <button id="arToggleBtn" class="ar-toggle-btn"><i class="fa-solid fa-vr-cardboard action-icon"></i>الواقع المعزز</button>
+    </nav>
+  </header>
+  <main>
+    <section class="news-controls">
+      <div class="filter-buttons">
+        <button class="filter-btn active" data-category="all">الكل</button>
+        <button class="filter-btn" data-category="سياسة">سياسة</button>
+        <button class="filter-btn" data-category="اقتصاد">اقتصاد</button>
+        <button class="filter-btn" data-category="رياضة">رياضة</button>
+        <button class="filter-btn" data-category="تكنولوجيا">تكنولوجيا</button>
+        <button class="filter-btn" data-category="صحة">صحة</button>
+        <button class="filter-btn" data-category="ترفيه">ترفيه</button>
+      </div>
+      <div class="sort-buttons">
+        <button class="sort-btn active" data-sort="latest">الأحدث</button>
+        <button class="sort-btn" data-sort="mostInteractive">الأكثر تفاعلاً</button>
+      </div>
+    </section>
+    <section class="news-cards">
+      <!-- سيتم تحميل الأخبار ديناميكياً من Firestore -->
+    </section>
+    <div class="load-more-container">
+      <button id="loadMoreBtn" class="btn-primary">تحميل المزيد</button>
+    </div>
+  </main>
+  <!-- AR Container for Three.js view (hidden by default) -->
+  <div id="arContainer" style="display: none;"></div>
+  <!-- Loader, Toast and Floating Action Button (FAB) -->
+  <div id="loader"></div>
+  <div id="toast-container"></div>
+  <button class="fab" id="newNewsBtn">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+      <circle cx="12" cy="12" r="10" fill="#3498db"/>
+      <path d="M12 8V16" stroke="#fff" stroke-width="2"/>
+      <path d="M8 12H16" stroke="#fff" stroke-width="2"/>
+    </svg>
+  </button>
+  <script src="script.js" type="module"></script>
+</body>
+</html>

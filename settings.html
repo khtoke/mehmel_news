@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>الإعدادات</title>
+  <!-- Open Graph Meta Tags for Social Media Cards -->
+  <meta property="og:title" content="الإعدادات - موقع الأخبار" />
+  <meta property="og:description" content="إعدادات الموقع وإدارة المستخدمين" />
+  <meta property="og:image" content="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 630'><rect width='1200' height='630' fill='%232A2F4F'/><text x='600' y='315' fill='%23ecf0f1' font-size='48' text-anchor='middle' alignment-baseline='middle'>موقع الأخبار</text></svg>" />
+  <meta property="og:url" content="https://yourdomain.com/settings.html" />
+  <meta property="og:type" content="website" />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-tf4U8S9XBoM0eKo+Y/LCNcxwsnG7Q1lWrBqs+of22s3BEJQALM3nFcK6H6heSjmy0LFHAfbboyiXSWa5HhY1qQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <div class="logo">موقع الأخبار</div>
+      <div class="nav-links">
+        <a href="index.html">الرئيسية</a>
+        <a href="login.html">تسجيل الدخول</a>
+        <a href="dashboard.html">لوحة التحكم</a>
+        <a id="settingsLink" href="settings.html" style="display: none;">الإعدادات</a>
+      </div>
+      <div class="search-box">
+        <input type="text" id="searchInput" placeholder="ابحث عن الأخبار...">
+      </div>
+    </nav>
+  </header>
+  <main>
+    <section class="settings-section">
+      <div class="settings-container">
+        <h2>إعدادات الموقع</h2>
+        <p>يمكن لمدير العام تعديل كافة الإعدادات والتحكم في المستخدمين من هنا.</p>
+
+        <div class="user-management-section">
+          <h3>إدارة المستخدمين</h3>
+          <button id="addUserBtn" class="btn-primary"><i class="fa-solid fa-user-plus action-icon"></i>إضافة مستخدم</button>
+          <div class="users-table-container">
+            <table id="usersTable">
+              <thead>
+                <tr>
+                  <th>الاسم</th>
+                  <th>الإيميل</th>
+                  <th>تاريخ التسجيل</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- Users data will be loaded here -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+  <div id="loader"></div>
+  <div id="toast-container"></div>
+  <script src="script.js" type="module"></script>
+</body>
+</html>
