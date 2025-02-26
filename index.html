@@ -1,68 +1,486 @@
-<html lang="ar">
+<html dir="rtl" lang="ar">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>موقع الأخبار</title>
-  <!-- Open Graph Meta Tags for Social Media Cards -->
-  <meta property="og:title" content="موقع الأخبار" />
-  <meta property="og:description" content="تابع آخر الأخبار والتقارير مباشرة" />
-  <meta property="og:image" content="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 630'><rect width='1200' height='630' fill='%232A2F4F'/><text x='600' y='315' fill='%23ecf0f1' font-size='48' text-anchor='middle' alignment-baseline='middle'>موقع الأخبار</text></svg>" />
-  <meta property="og:url" content="https://yourdomain.com/index.html" />
-  <meta property="og:type" content="website" />
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-tf4U8S9XBoM0eKo+Y/LCNcxwsnG7Q1lWrBqs+of22s3BEJQALM3nFcK6H6heSjmy0LFHAfbboyiXSWa5HhY1qQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>موقع إخباري</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.tiny.cloud/1/YOUR_TINYMCE_API_KEY/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
 </head>
 <body>
-  <header>
-    <nav class="navbar">
-      <div class="logo">موقع الأخبار</div>
-      <div class="nav-links">
-        <a href="index.html">الرئيسية</a>
-        <a href="login.html">تسجيل الدخول</a>
-        <a href="dashboard.html">لوحة التحكم</a>
-      </div>
-      <div class="search-box">
-        <input type="text" id="searchInput" placeholder="ابحث عن الأخبار...">
-      </div>
-      <button id="arToggleBtn" class="ar-toggle-btn"><i class="fa-solid fa-vr-cardboard action-icon"></i>الواقع المعزز</button>
-    </nav>
-  </header>
-  <main>
-    <section class="news-controls">
-      <div class="filter-buttons">
-        <button class="filter-btn active" data-category="all">الكل</button>
-        <button class="filter-btn" data-category="سياسة">سياسة</button>
-        <button class="filter-btn" data-category="اقتصاد">اقتصاد</button>
-        <button class="filter-btn" data-category="رياضة">رياضة</button>
-        <button class="filter-btn" data-category="تكنولوجيا">تكنولوجيا</button>
-        <button class="filter-btn" data-category="صحة">صحة</button>
-        <button class="filter-btn" data-category="ترفيه">ترفيه</button>
-      </div>
-      <div class="sort-buttons">
-        <button class="sort-btn active" data-sort="latest">الأحدث</button>
-        <button class="sort-btn" data-sort="mostInteractive">الأكثر تفاعلاً</button>
-      </div>
+    <header>
+        <div class="logo">
+            <svg width="50" height="50" viewBox="0 0 50 50">
+                <circle cx="25" cy="25" r="20" fill="#3498DB"/>
+                <text x="25" y="30" text-anchor="middle" fill="white" font-size="16">أخبار</text>
+            </svg>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#">أخبار عاجلة</a></li>
+                <li><a href="#">سياسة</a></li>
+                <li><a href="#">رياضة</a></li>
+                <li><a href="#">تكنولوجيا</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero-slider">
+        <div class="slide active" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://source.unsplash.com/random/1600x900?news,1')">
+            <div class="slide-content">
+                <h1>العنوان الرئيسي الأول</h1>
+                <p>وصف مختصر للخبر الأول...</p>
+            </div>
+        </div>
+        <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://source.unsplash.com/random/1600x900?news,2')">
+            <div class="slide-content">
+                <h1>العنوان الرئيسي الثاني</h1>
+                <p>وصف مختصر للخبر الثاني...</p>
+            </div>
+        </div>
+        <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://source.unsplash.com/random/1600x900?news,3')">
+            <div class="slide-content">
+                <h1>العنوان الرئيسي الثالث</h1>
+                <p>وصف مختصر للخبر الثالث...</p>
+            </div>
+        </div>
     </section>
-    <section class="news-cards">
-      <!-- سيتم تحميل الأخبار ديناميكياً من Firestore -->
-    </section>
-    <div class="load-more-container">
-      <button id="loadMoreBtn" class="btn-primary">تحميل المزيد</button>
+
+    <div class="breaking-news">
+        <div class="news-ticker">
+            عاجل: خبر مهم جداً || خبر عاجل آخر || تطورات جديدة في الأحداث العالمية || آخر المستجدات
+        </div>
     </div>
-  </main>
-  <!-- AR Container for Three.js view (hidden by default) -->
-  <div id="arContainer" style="display: none;"></div>
-  <!-- Loader, Toast and Floating Action Button (FAB) -->
-  <div id="loader"></div>
-  <div id="toast-container"></div>
-  <button class="fab" id="newNewsBtn">
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-      <circle cx="12" cy="12" r="10" fill="#3498db"/>
-      <path d="M12 8V16" stroke="#fff" stroke-width="2"/>
-      <path d="M8 12H16" stroke="#fff" stroke-width="2"/>
-    </svg>
-  </button>
-  <script src="script.js" type="module"></script>
+
+    <main>
+        <div class="grid-container" id="articles-grid">
+            <!-- Articles will be loaded here by JavaScript -->
+        </div>
+        <div class="load-more-container">
+            <button id="load-more-btn">عرض المزيد</button>
+        </div>
+    </main>
+
+    <div class="fab-button" id="add-article-fab">
+        <i class="fas fa-plus"></i>
+    </div>
+
+    <div id="article-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" id="close-modal">&times;</span>
+            <h2>إضافة مقال جديد</h2>
+            <form id="add-article-form">
+                <label for="article-title">العنوان:</label>
+                <input type="text" id="article-title" name="article-title" required>
+
+                <label for="article-content">المحتوى:</label>
+                <textarea id="article-content" name="article-content" required></textarea>
+
+                <label for="article-category">التصنيف:</label>
+                <select id="article-category" name="article-category" required>
+                    <option value="">اختر التصنيف</option>
+                    <option value="breaking">أخبار عاجلة</option>
+                    <option value="politics">سياسة</option>
+                    <option value="sports">رياضة</option>
+                </select>
+
+                <label for="article-cover-image">غلاف المقال (اختياري):</label>
+                <input type="file" id="article-cover-image" name="article-cover-image" accept="image/*">
+
+                <button type="submit" class="btn btn-primary" name="publish" value="publish">نشر الآن</button>
+                <button type="submit" class="btn btn-secondary" name="draft" value="draft">حفظ مسودة</button>
+
+            </form>
+        </div>
+    </div>
+
+    <div id="signup-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" id="close-signup-modal">&times;</span>
+            <h2>إنشاء حساب جديد</h2>
+            <form id="signup-form">
+                <label for="signup-email">البريد الإلكتروني:</label>
+                <input type="email" id="signup-email" name="signup-email" required>
+
+                <label for="signup-password">كلمة المرور:</label>
+                <input type="password" id="signup-password" name="signup-password" required>
+
+                <button type="submit" class="btn btn-primary">إنشاء حساب</button>
+            </form>
+        </div>
+    </div>
+
+    <div style="position: fixed; top: 10px; left: 10px; z-index: 1000; background: white; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+        <div id="auth-status">Checking auth...</div>
+        <button id="login-btn" style="display: none;">Login with Email</button>
+        <button id="signup-btn" style="display: none;">Sign Up</button>
+        <button id="google-signin-btn" style="display: none;">Sign in with Google</button>
+        <button id="logout-btn" style="display: none;">Logout</button>
+    </div>
+
+    <footer>
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+        <p class="copyright">جميع الحقوق محفوظة &copy; 2024</p>
+    </footer>
+
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-storage-compat.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Firebase configuration (replace with your actual config)
+            const firebaseConfig = {
+                apiKey: "AIzaSyC_rjwk9ZPyj-_hPC9d1h8989LN5nKL_TY",
+                authDomain: "mahmelnews.com",
+                projectId: "game-b469c",
+                storageBucket: "game-b469c.firebasestorage.app",
+                messagingSenderId: "965997841866",
+                appId: "1:965997841866:web:a2a6c2159fbc949a595333"
+            };
+
+            // Initialize Firebase
+            firebase.initializeApp(firebaseConfig);
+            const auth = firebase.auth();
+            const db = firebase.firestore();
+            const storage = firebase.storage();
+
+            tinymce.init({
+                selector: '#article-content',
+                plugins: 'image media lists',
+                toolbar: 'undo redo | styles | bold italic backcolor | lists numlist bullist | image media | removeformat | help',
+                menubar: false,
+                content_style: 'body { font-family: "Poppins", sans-serif; font-size:16px }',
+                directionality: 'rtl'
+            });
+
+
+            // Authentication state listener
+            auth.onAuthStateChanged(user => {
+                if (user) {
+                    console.log('User signed in:', user);
+                    // User is signed in
+                    document.getElementById('auth-status').textContent = 'Logged in as: ' + user.email;
+                    document.getElementById('login-btn').style.display = 'none';
+                    document.getElementById('signup-btn').style.display = 'none';
+                    document.getElementById('logout-btn').style.display = 'block';
+                    document.getElementById('google-signin-btn').style.display = 'none';
+
+                } else {
+                    // User is signed out
+                    console.log('User signed out');
+                    document.getElementById('auth-status').textContent = 'Logged out';
+                    document.getElementById('login-btn').style.display = 'block';
+                    document.getElementById('signup-btn').style.display = 'block';
+                    document.getElementById('google-signin-btn').style.display = 'block';
+                    document.getElementById('logout-btn').style.display = 'none';
+                }
+            });
+
+            // Sign in with email/password (basic example - expand as needed)
+            document.getElementById('login-btn').addEventListener('click', () => {
+                const email = prompt('Enter email');
+                const password = prompt('Enter password');
+                if (email && password) {
+                    auth.signInWithEmailAndPassword(email, password)
+                        .then((userCredential) => {
+                            // Signed in
+                            const user = userCredential.user;
+                            console.log('Signed in with email:', user);
+                        })
+                        .catch((error) => {
+                            const errorCode = error.code;
+                            const errorMessage = error.message;
+                            console.error('Login error:', errorCode, errorMessage);
+                            alert('Login failed: ' + errorMessage);
+                        });
+                }
+            });
+
+            // Sign in with Google
+            document.getElementById('google-signin-btn').addEventListener('click', () => {
+                const provider = new firebase.auth.GoogleAuthProvider();
+                auth.signInWithPopup(provider)
+                    .then((result) => {
+                        // Signed in
+                        const user = result.user;
+                        console.log('Signed in with Google:', user);
+                        // ...
+                    }).catch((error) => {
+                        // Handle Errors here.
+                        const errorCode = error.code;
+                        const errorMessage = error.message;
+                        console.error("Google Sign-in error:", errorCode, errorMessage);
+                        alert('Google Sign-in failed: ' + errorMessage);
+                    });
+            });
+
+            // Sign up with email/password
+            document.getElementById('signup-btn').addEventListener('click', () => {
+                document.getElementById('signup-modal').style.display = "block";
+            });
+
+            document.getElementById('close-signup-modal').addEventListener('click', () => {
+                document.getElementById('signup-modal').style.display = "none";
+            });
+
+            window.addEventListener('click', (event) => {
+                if (event.target == document.getElementById('signup-modal')) {
+                    document.getElementById('signup-modal').style.display = "none";
+                }
+            });
+
+            document.getElementById('signup-form').addEventListener('submit', (event) => {
+                event.preventDefault();
+                const email = document.getElementById('signup-email').value;
+                const password = document.getElementById('signup-password').value;
+
+                auth.createUserWithEmailAndPassword(email, password)
+                    .then((userCredential) => {
+                        // Signed up
+                        const user = userCredential.user;
+                        console.log('Signed up:', user);
+                        alert('تم إنشاء الحساب بنجاح!');
+                        document.getElementById('signup-modal').style.display = "none";
+                    })
+                    .catch((error) => {
+                        const errorCode = error.code;
+                        const errorMessage = error.message;
+                        console.error('Signup error:', errorCode, errorMessage);
+                        alert('فشل إنشاء الحساب: ' + errorMessage);
+                    });
+            });
+
+            // Sign out
+            document.getElementById('logout-btn').addEventListener('click', () => {
+                auth.signOut().then(() => {
+                    // Sign-out successful.
+                    console.log('Signed out');
+                }).catch((error) => {
+                    // An error happened.
+                    console.error('Sign-out error:', error);
+                    alert('Sign-out failed: ' + error.message);
+                });
+            });
+
+            let lastVisibleArticle = null;
+            let loadingArticles = false;
+
+            // Function to fetch articles from Firestore
+            function fetchArticles(initialFetch = true) {
+                if (loadingArticles) return;
+                loadingArticles = true;
+                document.getElementById('load-more-btn').textContent = 'جاري التحميل...';
+
+                let query = db.collection("articles")
+                    .orderBy("time", "desc")
+                    .limit(10);
+
+                if (!initialFetch && lastVisibleArticle) {
+                    query = query.startAfter(lastVisibleArticle);
+                }
+
+                query.get().then((querySnapshot) => {
+                    const articles = [];
+                    if (!querySnapshot.empty) {
+                        lastVisibleArticle = querySnapshot.docs[querySnapshot.docs.length - 1];
+                    } else {
+                        document.getElementById('load-more-btn').style.display = 'none'; // Hide button if no more articles
+                    }
+
+                    querySnapshot.forEach((doc) => {
+                        const articleData = doc.data();
+                        articleData.id = doc.id; // Add document ID to the data
+                        articles.push(articleData);
+                    });
+                    displayArticles(articles, initialFetch);
+                }).catch((error) => {
+                    console.error("Error getting articles: ", error);
+                    alert('فشل تحميل المقالات.');
+                }).finally(() => {
+                    loadingArticles = false;
+                    document.getElementById('load-more-btn').textContent = 'عرض المزيد';
+                });
+            }
+
+            function displayArticles(articles, initialFetch) {
+                const gridContainer = document.getElementById('articles-grid');
+                if (initialFetch) {
+                    gridContainer.innerHTML = ''; // Clear existing articles on initial fetch
+                }
+                articles.forEach(article => {
+                    const articleElement = document.createElement('article');
+                    articleElement.classList.add('grid-item');
+                    articleElement.innerHTML = `
+                        <h2>${article.title}</h2>
+                        <p>${article.content.substring(0, 150)}...</p>
+                        <div class="button-group">
+                            <a href="article.html?id=${article.id}" class="btn btn-primary">اقرأ المزيد</a>
+                            <a href="#" class="btn btn-secondary">مشاركة</a>
+                        </div>
+                    `;
+                    gridContainer.appendChild(articleElement);
+                });
+            }
+
+            // Load more articles
+            document.getElementById('load-more-btn').addEventListener('click', fetchArticles.bind(null, false));
+
+            fetchArticles(true); // Initial articles fetch on page load
+
+            // --- Modal functionality ---
+            const modal = document.getElementById('article-modal');
+            const fabButton = document.getElementById('add-article-fab');
+            const closeModalButton = document.getElementById('close-modal');
+            const addArticleForm = document.getElementById('add-article-form');
+
+            fabButton.onclick = function() {
+                modal.style.display = "block";
+            }
+
+            closeModalButton.onclick = function() {
+                modal.style.display = "none";
+            }
+
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
+
+            // --- Article creation form submission ---
+            addArticleForm.addEventListener('submit', function(event) {
+                event.preventDefault(); // Prevent default form submission
+
+                const title = document.getElementById('article-title').value;
+                // Get content from TinyMCE
+                const content = tinymce.get('article-content').getContent();
+                const category = document.getElementById('article-category').value;
+                const coverImageFile = document.getElementById('article-cover-image').files[0];
+                const publishStatus = event.submitter.value; // 'publish' or 'draft'
+                const collectionName = publishStatus === 'publish' ? 'articles' : 'drafts';
+
+
+                if (!title || !content || !category) {
+                    alert("الرجاء ملء جميع الحقول المطلوبة (العنوان والمحتوى والتصنيف).");
+                    return;
+                }
+
+                if (auth.currentUser) {
+                    if (coverImageFile) {
+                        // Handle image upload and then add article
+                        compressImage(coverImageFile, 1200, 630).then(compressedFile => { // Cover image dimensions
+                            uploadImageAndAddArticle(compressedFile, title, content, category, collectionName);
+                        });
+                    } else {
+                        // Add article without image
+                        addArticle(title, content, category, null, collectionName);
+                    }
+                } else {
+                    alert("يجب تسجيل الدخول لإضافة مقالات.");
+                }
+
+            });
+
+            function uploadImageAndAddArticle(imageFile, title, content, category, collectionName) {
+                const storageRef = storage.ref();
+                const imageName = `${Date.now()}-${imageFile.name}`; // Unique image name
+                const imageRef = storageRef.child(`article_images/${imageName}`); // Different folder for article images
+                const uploadTask = imageRef.put(imageFile);
+
+                uploadTask.on('state_changed',
+                    (snapshot) => {
+                        // Observe state change events such as progress, pause, and resume
+                        const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                        console.log('Image upload progress:', progress, '%');
+                    },
+                    (error) => {
+                        console.error("Image upload error:", error);
+                        alert('فشل رفع الصورة.');
+                    },
+                    () => {
+                        uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) => {
+                            console.log('File available at', downloadURL);
+                            addArticle(title, content, category, downloadURL, collectionName);
+                        });
+                    }
+                );
+            }
+
+            function addArticle(title, content, category, imageUrl, collectionName) {
+                db.collection(collectionName).add({ // Use collectionName variable
+                    title: title,
+                    content: content,
+                    category: category,
+                    time: firebase.firestore.FieldValue.serverTimestamp(),
+                    image: imageUrl || null, // Use null if no image URL
+                    status: collectionName === 'articles' ? 'published' : 'draft' // Add status field
+                })
+                .then((docRef) => {
+                    console.log("Document written with ID: ", docRef.id);
+                    fetchArticles(); // Refresh articles (fetches from 'articles' collection by default, adjust if needed for drafts)
+                    modal.style.display = "none"; // Hide modal
+                    addArticleForm.reset(); // Clear form fields
+                    tinymce.get('article-content').setContent(''); // Clear TinyMCE content
+                    alert('تم حفظ المقال بنجاح!');
+                })
+                .catch((error) => {
+                    console.error("Error adding document: ", error);
+                    alert('فشل نشر المقال.');
+                });
+            }
+
+            function compressImage(imageFile, maxWidth, maxHeight) {
+                return new Promise((resolve, reject) => {
+                    const reader = new FileReader();
+                    reader.readAsDataURL(imageFile);
+                    reader.onload = event => {
+                        const img = new Image();
+                        img.src = event.target.result;
+                        img.onload = () => {
+                            let width = img.width;
+                            let height = img.height;
+
+                            // Resize to cover image dimensions
+                            if (width > maxWidth || height > maxHeight) {
+                                const aspectRatio = width / height;
+                                if (aspectRatio > maxWidth / maxHeight) {
+                                    width = maxWidth;
+                                    height = width / aspectRatio;
+                                } else {
+                                    height = maxHeight;
+                                    width = height * aspectRatio;
+                                }
+                            }
+
+
+                            const canvas = document.createElement('canvas');
+                            canvas.width = width;
+                            canvas.height = height;
+                            const ctx = canvas.getContext('2d');
+                            ctx.drawImage(img, 0, 0, width, height);
+
+                            canvas.toBlob(blob => {
+                                const compressedFile = new File([blob], imageFile.name, {
+                                    type: 'image/jpeg', // Or 'image/webp' for potentially better compression
+                                    lastModified: Date.now()
+                                });
+                                resolve(compressedFile);
+                            }, 'image/jpeg', 0.8); // Adjust quality (0.8 is 80%)
+                        };
+                        img.onerror = reject;
+                    };
+                    reader.onerror = reject;
+                });
+            }
+
+        });
+    </script>
 </body>
 </html>
