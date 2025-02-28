@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تسجيل عضوية - موقع الأخبار</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="register.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="logo">موقع الأخبار</div>
+        <ul>
+            <li><a href="index.html">الرئيسية</a></li>
+            <li><a href="#">أخبار عامة</a></li>
+            <li><a href="#" class="urgent">عاجل</a></li>
+            <li><a href="donations.html">تبرعات</a></li>
+            <li><a href="register.html" class="login-btn active">تسجيل دخول</a></li>
+        </ul>
+    </nav>
+
+    <main class="register-main">
+        <div class="register-container">
+            <h1>إنشاء حساب جديد</h1>
+            
+            <div class="social-login">
+                <button class="google-btn">
+                    <i class="fab fa-google"></i>
+                    تسجيل باستخدام Google
+                </button>
+                <button class="facebook-btn">
+                    <i class="fab fa-facebook-f"></i>
+                    تسجيل باستخدام Facebook
+                </button>
+            </div>
+
+            <div class="divider">
+                <span>أو</span>
+            </div>
+
+            <form id="register-form">
+                <div class="form-group">
+                    <label for="name">الاسم الكامل</label>
+                    <input type="text" id="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">البريد الإلكتروني</label>
+                    <input type="email" id="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">كلمة المرور</label>
+                    <div class="password-input">
+                        <input type="password" id="password" required>
+                        <i class="far fa-eye-slash toggle-password"></i>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="confirm-password">تأكيد كلمة المرور</label>
+                    <div class="password-input">
+                        <input type="password" id="confirm-password" required>
+                        <i class="far fa-eye-slash toggle-password"></i>
+                    </div>
+                </div>
+
+                <div class="terms-privacy">
+                    <label class="checkbox-container">
+                        <input type="checkbox" required>
+                        <span class="checkmark"></span>
+                        أوافق على <a href="#">شروط الاستخدام</a> و <a href="#">سياسة الخصوصية</a>
+                    </label>
+                </div>
+
+                <button type="submit" class="register-btn">إنشاء حساب</button>
+            </form>
+
+            <p class="login-link">
+                لديك حساب بالفعل؟ <a href="#">تسجيل الدخول</a>
+            </p>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>روابط سريعة</h3>
+                <ul>
+                    <li><a href="#">من نحن</a></li>
+                    <li><a href="#">اتصل بنا</a></li>
+                    <li><a href="#">سياسة الخصوصية</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>تابعنا</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>جميع الحقوق محفوظة 2024</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="register.js"></script>
+</body>
+</html>

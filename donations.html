@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>التبرعات - موقع الأخبار</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="donations.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- نسخ القائمة العلوية من الصفحة الرئيسية -->
+    <nav class="main-nav">
+        <div class="logo">موقع الأخبار</div>
+        <ul>
+            <li><a href="index.html">الرئيسية</a></li>
+            <li><a href="#">أخبار عامة</a></li>
+            <li><a href="#" class="urgent">عاجل</a></li>
+            <li><a href="donations.html" class="active">تبرعات</a></li>
+            <li><a href="register.html" class="login-btn">تسجيل دخول</a></li>
+        </ul>
+    </nav>
+
+    <main class="donation-main">
+        <h1>حملات التبرع الحالية</h1>
+        
+        <div class="campaigns-grid">
+            <div class="campaign-card">
+                <div class="campaign-image">
+                    <svg viewBox="0 0 100 100" class="campaign-icon">
+                        <circle cx="50" cy="50" r="45" fill="#3949ab" opacity="0.2"/>
+                        <path d="M30,50 Q50,30 70,50 T90,50" fill="none" stroke="#1a237e" stroke-width="3"/>
+                        <circle cx="50" cy="40" r="15" fill="#1a237e"/>
+                    </svg>
+                </div>
+                <h3>مساعدة المحتاجين</h3>
+                <div class="progress-bar">
+                    <div class="progress" style="width: 75%"></div>
+                </div>
+                <div class="campaign-stats">
+                    <span>الهدف: 100,000 ريال</span>
+                    <span>تم جمع: 75,000 ريال</span>
+                </div>
+                <button class="donate-btn" onclick="openDonationForm(1)">تبرع الآن</button>
+            </div>
+
+            <div class="campaign-card">
+                <div class="campaign-image">
+                    <svg viewBox="0 0 100 100" class="campaign-icon">
+                        <rect x="25" y="25" width="50" height="50" fill="#3949ab" opacity="0.2"/>
+                        <path d="M35,65 L65,35" stroke="#1a237e" stroke-width="3"/>
+                        <path d="M35,35 L65,65" stroke="#1a237e" stroke-width="3"/>
+                    </svg>
+                </div>
+                <h3>دعم التعليم</h3>
+                <div class="progress-bar">
+                    <div class="progress" style="width: 45%"></div>
+                </div>
+                <div class="campaign-stats">
+                    <span>الهدف: 50,000 ريال</span>
+                    <span>تم جمع: 22,500 ريال</span>
+                </div>
+                <button class="donate-btn" onclick="openDonationForm(2)">تبرع الآن</button>
+            </div>
+        </div>
+
+        <!-- نموذج التبرع -->
+        <div id="donation-modal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>نموذج التبرع</h2>
+                <form id="donation-form">
+                    <div class="amount-options">
+                        <button type="button" class="amount-btn" data-amount="100">100 ريال</button>
+                        <button type="button" class="amount-btn" data-amount="200">200 ريال</button>
+                        <button type="button" class="amount-btn" data-amount="500">500 ريال</button>
+                        <button type="button" class="amount-btn" data-amount="1000">1000 ريال</button>
+                    </div>
+                    <div class="custom-amount">
+                        <label for="custom-amount">مبلغ آخر:</label>
+                        <input type="number" id="custom-amount" placeholder="أدخل المبلغ">
+                    </div>
+                    <div class="payment-details">
+                        <input type="text" placeholder="رقم البطاقة" required>
+                        <div class="card-info">
+                            <input type="text" placeholder="MM/YY" required>
+                            <input type="text" placeholder="CVV" required>
+                        </div>
+                        <input type="text" placeholder="الاسم على البطاقة" required>
+                    </div>
+                    <button type="submit" class="submit-btn">تأكيد التبرع</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <!-- نسخ التذييل من الصفحة الرئيسية -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>روابط سريعة</h3>
+                <ul>
+                    <li><a href="#">من نحن</a></li>
+                    <li><a href="#">اتصل بنا</a></li>
+                    <li><a href="#">سياسة الخصوصية</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>تابعنا</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>جميع الحقوق محفوظة 2024</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="donations.js"></script>
+</body>
+</html>

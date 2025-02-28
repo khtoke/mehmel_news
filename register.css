@@ -1,0 +1,159 @@
+.register-main {
+    max-width: 500px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.register-container {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.register-container h1 {
+    color: var(--text-gray);
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.social-login {
+    display: grid;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.social-login button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    font-size: 1em;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: background-color 0.3s;
+}
+
+.google-btn {
+    background: #fff;
+    border: 1px solid #ddd;
+    color: #555;
+}
+
+.facebook-btn {
+    background: #1877f2;
+    color: white;
+}
+
+.divider {
+    text-align: center;
+    position: relative;
+    margin: 20px 0;
+}
+
+.divider::before,
+.divider::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 45%;
+    height: 1px;
+    background: #ddd;
+}
+
+.divider::before { right: 0; }
+.divider::after { left: 0; }
+
+.divider span {
+    background: white;
+    padding: 0 10px;
+    color: #777;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: var(--text-gray);
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus {
+    border-color: var(--secondary-blue);
+    outline: none;
+}
+
+.password-input {
+    position: relative;
+}
+
+.toggle-password {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #777;
+}
+
+.terms-privacy {
+    margin: 20px 0;
+}
+
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+}
+
+.checkbox-container a {
+    color: var(--primary-blue);
+    text-decoration: none;
+}
+
+.register-btn {
+    width: 100%;
+    padding: 12px;
+    background: var(--primary-blue);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.register-btn:hover {
+    background: var(--secondary-blue);
+}
+
+.login-link {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.login-link a {
+    color: var(--primary-blue);
+    text-decoration: none;
+}
+
+@media (max-width: 480px) {
+    .register-container {
+        padding: 20px;
+    }
+}
+

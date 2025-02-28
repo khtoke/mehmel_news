@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة التحكم - إدارة المحتوى</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="admin.css">
+    <script src="https://cdn.tiny.cloud/1/your-api-key/tinymce/5/tinymce.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="admin-container">
+        <nav class="admin-sidebar">
+            <div class="admin-logo">لوحة التحكم</div>
+            <ul class="admin-menu">
+                <li class="active"><a href="#dashboard"><i class="fas fa-home"></i>الرئيسية</a></li>
+                <li><a href="#articles"><i class="fas fa-newspaper"></i>المقالات</a></li>
+                <li><a href="#categories"><i class="fas fa-folder"></i>الفئات والوسوم</a></li>
+                <li><a href="#media"><i class="fas fa-image"></i>المرفقات</a></li>
+                <li><a href="#donations"><i class="fas fa-hand-holding-heart"></i>التبرعات</a></li>
+            </ul>
+        </nav>
+
+        <main class="admin-main">
+            <header class="admin-header">
+                <div class="search-bar">
+                    <input type="search" placeholder="بحث...">
+                </div>
+                <div class="admin-profile">
+                    <span id="admin-name"></span>
+                    <button onclick="logout()">تسجيل خروج</button>
+                </div>
+            </header>
+
+            <div class="dashboard-stats">
+                <div class="stat-card">
+                    <h3>المقالات المنشورة</h3>
+                    <div class="stat-value" id="articles-count">0</div>
+                </div>
+                <div class="stat-card">
+                    <h3>التعليقات الجديدة</h3>
+                    <div class="stat-value" id="comments-count">0</div>
+                </div>
+                <div class="stat-card">
+                    <h3>التبرعات اليوم</h3>
+                    <div class="stat-value" id="today-donations">0</div>
+                </div>
+            </div>
+
+            <div class="content-editor">
+                <h2>إضافة مقال جديد</h2>
+                <form id="article-form">
+                    <div class="form-group">
+                        <input type="text" placeholder="عنوان المقال" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="article-editor"></textarea>
+                    </div>
+                    <div class="publish-options">
+                        <div class="schedule-publish">
+                            <label>
+                                <input type="checkbox" id="schedule-toggle">
+                                جدولة النشر
+                            </label>
+                            <input type="datetime-local" id="schedule-time" disabled>
+                        </div>
+                        <div class="categories-tags">
+                            <select multiple id="categories">
+                                <option>أخبار عامة</option>
+                                <option>سياسة</option>
+                                <option>اقتصاد</option>
+                            </select>
+                            <input type="text" placeholder="الوسوم (مفصولة بفواصل)">
+                        </div>
+                    </div>
+                    <button type="submit" class="publish-btn">نشر المقال</button>
+                </form>
+            </div>
+
+            <div class="media-library">
+                <h2>مكتبة المرفقات</h2>
+                <div class="upload-zone" id="upload-zone">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <p>اسحب الملفات هنا أو انقر للرفع</p>
+                    <input type="file" multiple hidden>
+                </div>
+                <div class="media-grid" id="media-grid">
+                    <!-- سيتم ملؤها ديناميكياً -->
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+</html>
