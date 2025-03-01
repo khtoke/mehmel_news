@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>اتصل بنا - اخبار المحمل </title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Cairo', Arial, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .contact-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            border-bottom: 2px solid #e63946;
+            padding-bottom: 1.5rem;
+        }
+        
+        .contact-header h1 {
+            font-size: 2.5rem;
+            color: #1d3557;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        
+        .contact-header p {
+            font-size: 1.1rem;
+            color: #457b9d;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .contact-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .contact-info {
+            flex: 1;
+            min-width: 300px;
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+        }
+        
+        .contact-info h2 {
+            color: #e63946;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            border-right: 4px solid #e63946;
+            padding-right: 10px;
+        }
+        
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+        }
+        
+        .info-icon {
+            width: 45px;
+            height: 45px;
+            background-color: #f1faee;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 1rem;
+            color: #e63946;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+        
+        .info-text h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: #1d3557;
+        }
+        
+        .info-text p {
+            color: #457b9d;
+        }
+        
+        .news-tips {
+            background-color: #f1faee;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-top: 2rem;
+            border-right: 4px solid #1d3557;
+        }
+        
+        .news-tips h3 {
+            color: #1d3557;
+            margin-bottom: 1rem;
+        }
+        
+        .news-tips p {
+            margin-bottom: 1rem;
+        }
+        
+        .social-section {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+        }
+        
+        .social-section h2 {
+            color: #e63946;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            border-right: 4px solid #e63946;
+            padding-right: 10px;
+        }
+        
+        .social-section p {
+            margin-bottom: 1.5rem;
+            color: #457b9d;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .social-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            background-color: #f1faee;
+            padding: 0.8rem 1.2rem;
+            border-radius: 6px;
+            transition: all 0.3s;
+        }
+        
+        .social-item:hover {
+            background-color: #e63946;
+            color: #fff;
+        }
+        
+        .social-item:hover .info-text p {
+            color: #fff;
+        }
+        
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            background-color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #e63946;
+            font-size: 1.2rem;
+            margin-left: 1rem;
+            flex-shrink: 0;
+        }
+        
+        /* للتجاوب مع الشاشات الصغيرة */
+        @media (max-width: 768px) {
+            .contact-content {
+                flex-direction: column;
+            }
+            .contact-header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="contact-header">
+            <h1>اتصل بنا</h1>
+            <p>نحن دائماً متاحون للتواصل معك والرد على استفساراتك.</p>
+        </div>
+        
+        <div class="contact-content">
+            <div class="contact-info">
+                <h2>معلومات التواصل</h2>
+                
+                <div class="info-item">
+                    <div class="info-icon">📍</div>
+                    <div class="info-text">
+                        <h3>المقر الرئيسي</h3>
+                        <p>الرياض، المملكة العربية السعودية، شارع الصحافة، مبنى الأخبار، الطابق 5</p>
+                    </div>
+                </div>
+                
+                <div class="info-item">
+                    <div class="info-icon">📞</div>
+                    <div class="info-text">
+                        <h3>الخط الساخن للأخبار</h3>
+                        <p>+966 12 345 6789</p>
+                    </div>
+                </div>
+                
+                <div class="info-item">
+                    <div class="info-icon">✉️</div>
+                    <div class="info-text">
+                        <h3>البريد الإلكتروني</h3>
+                        <p>news@yoursite.com</p>
+                    </div>
+                </div>
+                
+                <div class="info-item">
+                    <div class="info-icon">⏰</div>
+                    <div class="info-text">
+                        <h3>متاحون</h3>
+                        <p>على مدار الساعة، طوال أيام الأسبوع</p>
+                    </div>
+                </div>
+                
+                <div class="news-tips">
+                    <h3>هل لديك خبر عاجل؟</h3>
+                    <p>يمكنك إرسال الأخبار العاجلة والصور عبر البريد الإلكتروني: tips@yoursite.com</p>
+                    <p>أو الاتصال بالخط الساخن للأخبار: +966 12 345 6780</p>
+                </div>
+            </div>
+            
+            <div class="social-section">
+                <h2>تابعنا على وسائل التواصل</h2>
+                <p>ابق على اطلاع بآخر الأخبار من خلال متابعتنا على منصات التواصل الاجتماعي:</p>
+                
+                <div class="social-links">
+                    <div class="social-item">
+                        <div class="social-icon">𝕏</div>
+                        <div class="info-text">
+                            <h3>تويتر (إكس)</h3>
+                            <p>@YourNewsHandle</p>
+                        </div>
+                    </div>
+                    
+                    <div class="social-item">
+                        <div class="social-icon">f</div>
+                        <div class="info-text">
+                            <h3>فيسبوك</h3>
+                            <p>YourNewsPage</p>
+                        </div>
+                    </div>
+                    
+                    <div class="social-item">
+                        <div class="social-icon">in</div>
+                        <div class="info-text">
+                            <h3>لينكد إن</h3>
+                            <p>Your News Network</p>
+                        </div>
+                    </div>
+                    
+                    <div class="social-item">
+                        <div class="social-icon">📸</div>
+                        <div class="info-text">
+                            <h3>انستغرام</h3>
+                            <p>@yournews_official</p>
+                        </div>
+                    </div>
+                    
+                    <div class="social-item">
+                        <div class="social-icon">▶️</div>
+                        <div class="info-text">
+                            <h3>يوتيوب</h3>
+                            <p>Your News Channel</p>
+                        </div>
+                    </div>
+                    
+                    <div class="social-item">
+                        <div class="social-icon">📱</div>
+                        <div class="info-text">
+                            <h3>واتساب</h3>
+                            <p>+966 12 345 6790</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
